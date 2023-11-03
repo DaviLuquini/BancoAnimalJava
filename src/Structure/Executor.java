@@ -16,6 +16,8 @@ public class Executor {
         boolean continuarSistema = true;
         String entrada;
         List<String> entradas = new ArrayList<>();
+        List<Cachorro> cachorros = new ArrayList<>();
+        List<Gato> gatos = new ArrayList<>();
 
         while (continuarSistema) {
             System.out.println("Digite o numero que você deseja fazer: " +
@@ -29,28 +31,59 @@ public class Executor {
                     entrada = scanner.nextLine();
                     entradas.add(entrada);
 
-                    List<Cachorro> cachorros = animalManager.criarCachorrosDinamicamente(entradas);
+                    cachorros = animalManager.criarCachorrosDinamicamente(entradas);
 
-                    for (Cachorro cachorro : cachorros) {
-                        System.out.println("Cachorro criado: " + cachorro.getNome());
-                    }
+                    int indiceUltimoCachorro = cachorros.size() - 1;
+                    Cachorro ultimoCachorro = cachorros.get(indiceUltimoCachorro);
+                    System.out.println("Cachorro criado: " + ultimoCachorro.getNome());
                     break;
                 case "2":
                     System.out.println("Digite os Atributos do seu gato: (Nome, Cor do gato, Idade e Quantidade de Patas)");
                     entrada = scanner.nextLine();
                     entradas.add(entrada);
 
-                    List<Gato> gatos = animalManager.criarGatosDinamicamente(entradas);
+                    gatos = animalManager.criarGatosDinamicamente(entradas);
 
-                    for (Gato gato : gatos) {
-                        System.out.println("Gato criado: " + gato.getNome());
+                    int indiceUltimoGato = gatos.size() - 1;
+                    Gato ultimoGato = gatos.get(indiceUltimoGato);
+                    System.out.println("Gato criado: " + ultimoGato.getNome());
+                    break;
+                case "3":
+                    if (!cachorros.isEmpty()) {
+                        System.out.println("Lista de Cachorros existentes: ");
+                        for (Cachorro cachorro : cachorros) {
+                            System.out.println(cachorro.getNome());
+                        }
+                        System.out.println("Você deseja verificar algum cachorro em específico?");
+                        String respostaSimNao = scanner.nextLine().toLowerCase();
+                        if(respostaSimNao.equals("sim")) {
+                            System.out.println("Qual cachorro você deseja verificar em específico?");
+                            for (Cachorro cachorro : cachorros) {
+                                System.out.println(cachorro.getNome());
+                            }
+                        } else {
+                            System.out.println("Ok, voltando ao menu...");
+                        }
+
+                    } else {
+                        System.out.println("Ainda não existe Cachorros no banco.");
+                    }
+                    break;
+                case "4":
+                    if (!gatos.isEmpty()) {
+                        System.out.println("Lista de Gatos existentes: ");
+                        for (Gato gato : gatos) {
+                            System.out.println(gato.getNome());
+                        }
+                    } else {
+                        System.out.println("Ainda não existe Gatos no banco.");
                     }
                     break;
                 case "7":
                     System.out.println("Ok, Sistema encerrando...");
                     System.exit(0);
                 default:
-                    System.out.println("Digite sua escolha de 1 a 7)");
+                    System.out.println("Digite sua escolha de 1 a 7");
                     break;
             }
         }

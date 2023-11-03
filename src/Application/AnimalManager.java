@@ -19,7 +19,12 @@ public class AnimalManager {
 
         while (!atributosCorretos) {
             for (String entrada : entradas) {
-                String[] atributos = entrada.split(",");
+                String[] atributos;
+                if (entrada.contains(",")) {
+                    atributos = entrada.split(",");
+                } else {
+                    atributos = entrada.split(" ");
+                }
                 if (atributos.length == 4) {
                     String nome = atributos[0].trim();
                     String nomeDono = atributos[1].trim();
@@ -38,7 +43,7 @@ public class AnimalManager {
                     atributosCorretos = true;
                 } else {
                     System.out.println("Por favor, forneça os atributos corretamente.");
-                    System.out.println("Digite os Atributos do seu gato: (Nome, Cor do gato, Idade e Quantidade de Patas)");
+                    System.out.println("Digite os Atributos do seu Cachorro: (Nome, Nome do dono, Idade e Quantidade de Patas)");
                     entradas.clear();
                     entradas.add(scanner.nextLine());
                     break;
@@ -54,7 +59,12 @@ public class AnimalManager {
 
         while (!atributosCorretos) {
             for (String entrada : entradas) {
-                String[] atributos = entrada.split(",");
+                String[] atributos;
+                if (entrada.contains(",")) {
+                    atributos = entrada.split(",");
+                } else {
+                    atributos = entrada.split(" ");
+                }
                 if (atributos.length == 4) {
                     String nome = atributos[0].trim();
                     String cor = atributos[1].trim();
