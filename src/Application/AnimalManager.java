@@ -15,6 +15,7 @@ public class AnimalManager {
     List<Gato> gatos = new ArrayList<>();
     String entrada;
     List<String> entradas = new ArrayList<>();
+
     //Adiciona o animal ao Array utilizando do CreateAnimal
     public void AdicionarCachorro() {
         System.out.println("Digite os Atributos do seu cachorro: (Nome, Nome do Dono, Idade e Quantidade de Patas)");
@@ -42,30 +43,38 @@ public class AnimalManager {
 
     public void VerificarCachorro() {
         if (!cachorros.isEmpty()) {
-            System.out.println("Lista de Cachorros existentes: ");
+            System.out.print("Lista de Cachorros existentes: ");
             for (Cachorro cachorro : cachorros) {
-                System.out.println(cachorro.getNome());
+                System.out.print(cachorro.getNome() + ", ");
             }
+            System.out.println();
             System.out.println("Você deseja verificar algum cachorro em específico?");
             String respostaSimNao = scanner.nextLine().toLowerCase();
-            if(respostaSimNao.equals("sim")) {
+
+            if (respostaSimNao.equals("sim")) {
                 System.out.println("Qual cachorro você deseja verificar em específico?");
                 for (Cachorro cachorro : cachorros) {
-                    System.out.println(cachorro.getNome());
+                    System.out.print(cachorro.getNome() + ", ");
                 }
-            } else {
-                System.out.println("Ok, voltando ao menu...");
+                System.out.println();
+                String cachorroVerificar = scanner.nextLine();
+                for (Cachorro cachorro : cachorros) {
+                    if (cachorroVerificar.equals(cachorro.getNome())) {
+                        cachorroVerificar = cachorro.toString();
+                        System.out.println(cachorroVerificar);
+                    }
+                }
             }
-
         } else {
-            System.out.println("Ainda não existe Cachorros no banco.");
+            System.out.println("Ok, voltando ao menu...");
         }
     }
+
     public void VerificarGato() {
         if (!gatos.isEmpty()) {
-            System.out.println("Lista de Gatos existentes: ");
+            System.out.print("Lista de Gatos existentes: ");
             for (Gato gato : gatos) {
-                System.out.println(gato.getNome());
+                System.out.println(gato.getNome() + ", ");
             }
         } else {
             System.out.println("Ainda não existe Gatos no banco.");

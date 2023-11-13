@@ -23,10 +23,10 @@ public class Cachorro extends Animal {
         System.out.println("Au au");
     }
 
-
     public String toString() {
         return "Nome: " + getNome() + ", Nome do Dono: " + getNomeDono() + ", Idade: " + getIdade() + ", Quantidade de Patas: " + getQntdDePatas();
     }
+
     @Override
     public void imprimirAtributos() {
         System.out.println(this.toString());
