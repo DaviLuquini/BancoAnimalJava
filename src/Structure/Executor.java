@@ -1,23 +1,17 @@
 package Structure;
 
+import Application.AnimalManager;
 import Domain.Cachorro;
 import Domain.Gato;
-import Application.AnimalManager;
 
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
 
 public class Executor {
-
     public static void main(String[] args) {
         AnimalManager animalManager = new AnimalManager();
         Scanner scanner = new Scanner(System.in);
+
         boolean continuarSistema = true;
-        String entrada;
-        List<String> entradas = new ArrayList<>();
-        List<Cachorro> cachorros = new ArrayList<>();
-        List<Gato> gatos = new ArrayList<>();
 
         while (continuarSistema) {
             System.out.println("Digite o numero que você deseja fazer: " +
@@ -27,57 +21,16 @@ public class Executor {
             String resposta1 = scanner.nextLine();
             switch (resposta1) {
                 case "1":
-                    System.out.println("Digite os Atributos do seu cachorro: (Nome, Nome do Dono, Idade e Quantidade de Patas)");
-                    entrada = scanner.nextLine();
-                    entradas.add(entrada);
-
-                    cachorros = animalManager.criarCachorrosDinamicamente(entradas);
-
-                    int indiceUltimoCachorro = cachorros.size() - 1;
-                    Cachorro ultimoCachorro = cachorros.get(indiceUltimoCachorro);
-                    System.out.println("Cachorro criado: " + ultimoCachorro.getNome());
+                    animalManager.AdicionarCachorro();
                     break;
                 case "2":
-                    System.out.println("Digite os Atributos do seu gato: (Nome, Cor do gato, Idade e Quantidade de Patas)");
-                    entrada = scanner.nextLine();
-                    entradas.add(entrada);
-
-                    gatos = animalManager.criarGatosDinamicamente(entradas);
-
-                    int indiceUltimoGato = gatos.size() - 1;
-                    Gato ultimoGato = gatos.get(indiceUltimoGato);
-                    System.out.println("Gato criado: " + ultimoGato.getNome());
+                    animalManager.AdicionarGato();
                     break;
                 case "3":
-                    if (!cachorros.isEmpty()) {
-                        System.out.println("Lista de Cachorros existentes: ");
-                        for (Cachorro cachorro : cachorros) {
-                            System.out.println(cachorro.getNome());
-                        }
-                        System.out.println("Você deseja verificar algum cachorro em específico?");
-                        String respostaSimNao = scanner.nextLine().toLowerCase();
-                        if(respostaSimNao.equals("sim")) {
-                            System.out.println("Qual cachorro você deseja verificar em específico?");
-                            for (Cachorro cachorro : cachorros) {
-                                System.out.println(cachorro.getNome());
-                            }
-                        } else {
-                            System.out.println("Ok, voltando ao menu...");
-                        }
-
-                    } else {
-                        System.out.println("Ainda não existe Cachorros no banco.");
-                    }
+                   animalManager.VerificarCachorro();
                     break;
                 case "4":
-                    if (!gatos.isEmpty()) {
-                        System.out.println("Lista de Gatos existentes: ");
-                        for (Gato gato : gatos) {
-                            System.out.println(gato.getNome());
-                        }
-                    } else {
-                        System.out.println("Ainda não existe Gatos no banco.");
-                    }
+                    animalManager.VerificarGato();
                     break;
                 case "7":
                     System.out.println("Ok, Sistema encerrando...");
