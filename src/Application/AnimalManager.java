@@ -14,6 +14,7 @@ public class AnimalManager {
     List<Cachorro> cachorros = new ArrayList<>();
     List<Gato> gatos = new ArrayList<>();
     String entrada;
+    boolean continuar = true;
     List<String> entradas = new ArrayList<>();
 
     //Adiciona o animal ao Array utilizando do CreateAnimal
@@ -42,42 +43,76 @@ public class AnimalManager {
     }
 
     public void VerificarCachorro() {
-        if (!cachorros.isEmpty()) {
-            System.out.print("Lista de Cachorros existentes: ");
-            for (Cachorro cachorro : cachorros) {
-                System.out.print(cachorro.getNome() + ", ");
-            }
-            System.out.println();
-            System.out.println("Você deseja verificar algum cachorro em específico?");
-            String respostaSimNao = scanner.nextLine().toLowerCase();
-
-            if (respostaSimNao.equals("sim")) {
-                System.out.println("Qual cachorro você deseja verificar em específico?");
+        while (continuar) {
+            if (!cachorros.isEmpty()) {
+                System.out.print("Lista de Cachorros existentes: ");
                 for (Cachorro cachorro : cachorros) {
                     System.out.print(cachorro.getNome() + ", ");
                 }
                 System.out.println();
-                String cachorroVerificar = scanner.nextLine();
-                for (Cachorro cachorro : cachorros) {
-                    if (cachorroVerificar.equals(cachorro.getNome())) {
-                        cachorroVerificar = cachorro.toString();
-                        System.out.println(cachorroVerificar);
+                System.out.println("Você deseja verificar algum cachorro em específico?");
+                String respostaSimNao = scanner.nextLine().toLowerCase();
+
+                if (respostaSimNao.equals("sim")) {
+                    System.out.println("Qual cachorro você deseja verificar em específico?");
+                    for (Cachorro cachorro : cachorros) {
+                        System.out.print(cachorro.getNome() + ", ");
                     }
+                    System.out.println();
+                    String cachorroVerificar = scanner.nextLine();
+                    for (Cachorro cachorro : cachorros) {
+                        if (cachorroVerificar.equals(cachorro.getNome())) {
+                            cachorroVerificar = cachorro.toString();
+                            System.out.println(cachorroVerificar);
+                            continuar = false;
+                        }
+                    }
+                } else if (respostaSimNao.equals("nao")) {
+                    System.out.println("Ok voltando ao menu...");
+                    continuar = false;
+                } else {
+                    System.out.println("Digite Sim ou Nao.");
                 }
+            } else {
+                System.out.println("A lista de cachorros ainda esta vazia.");
             }
-        } else {
-            System.out.println("Ok, voltando ao menu...");
         }
     }
 
     public void VerificarGato() {
-        if (!gatos.isEmpty()) {
-            System.out.print("Lista de Gatos existentes: ");
-            for (Gato gato : gatos) {
-                System.out.println(gato.getNome() + ", ");
+        while (continuar) {
+            if (!gatos.isEmpty()) {
+                System.out.print("Lista de Gatos existentes: ");
+                for (Gato gato : gatos) {
+                    System.out.print(gato.getNome() + ", ");
+                }
+                System.out.println();
+                System.out.println("Você deseja verificar algum Gatos em específico?");
+                String respostaSimNao = scanner.nextLine().toLowerCase();
+
+                if (respostaSimNao.equals("sim")) {
+                    System.out.println("Qual Gatos você deseja verificar em específico?");
+                    for (Gato gato : gatos) {
+                        System.out.print(gato.getNome() + ", ");
+                    }
+                    System.out.println();
+                    String gatoVerificar = scanner.nextLine();
+                    for (Gato gato : gatos) {
+                        if (gatoVerificar.equals(gato.getNome())) {
+                            gatoVerificar = gato.toString();
+                            System.out.println(gatoVerificar);
+                            continuar = false;
+                        }
+                    }
+                } else if (respostaSimNao.equals("nao")) {
+                    System.out.println("Ok voltando ao menu...");
+                    continuar = false;
+                } else {
+                    System.out.println("Digite Sim ou Nao.");
+                }
+            } else {
+                System.out.println("A lista de gatos ainda esta vazia.");
             }
-        } else {
-            System.out.println("Ainda não existe Gatos no banco.");
         }
     }
 

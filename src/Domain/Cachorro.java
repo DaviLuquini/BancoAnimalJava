@@ -24,7 +24,7 @@ public class Cachorro extends Animal {
     }
 
     public String toString() {
-        return "Nome: " + getNome() + ", Nome do Dono: " + getNomeDono() + ", Idade: " + getIdade() + ", Quantidade de Patas: " + getQntdDePatas();
+        return "Nome: " + getNome() + " , Nome do Dono: " + getNomeDono() + " , Idade: " + getIdade() + " , Quantidade de Patas: " + getQntdDePatas();
     }
 
     @Override
