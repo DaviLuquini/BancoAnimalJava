@@ -16,6 +16,7 @@ public class Animal {
     public void setNome(String nome) {
         this.nome = nome;
     }
+
     public int getIdade() {
         return idade;
     }
@@ -40,7 +41,6 @@ public class Animal {
     public void imprimirAtributos() {
         System.out.println("Atributos genéricos de um animal.");
     }
-
 }
 
 

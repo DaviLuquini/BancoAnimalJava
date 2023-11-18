@@ -27,7 +27,7 @@ public class Executor {
                     animalManager.AdicionarGato();
                     break;
                 case "3":
-                   animalManager.VerificarCachorro();
+                    animalManager.VerificarCachorro();
                     break;
                 case "4":
                     animalManager.VerificarGato();
@@ -42,6 +42,7 @@ public class Executor {
         }
     }
 }
+
 /*
         dog1.fazerBarulho();
         dog1.imprimirAtributos();
@@ -55,3 +56,5 @@ public class Executor {
 
 }
 */
+
+
